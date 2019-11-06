@@ -1,0 +1,6 @@
+- targets:  # url;humanname;routing;switch
+    - https://google.com;google.com;external;internetbox
+    - https://github.com;github.com;external;internetbox
+    - https://lafibre.info;lafibre.info;external;internetbox
+    - http://192.168.1.1;internetbox;local;internetbox
+    - http://192.168.1.2;nas;local;internetbox
