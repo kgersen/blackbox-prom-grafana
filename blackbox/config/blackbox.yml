@@ -11,3 +11,6 @@ modules:
     prober: tcp
   icmp:
     prober: icmp
+    icmp:
+      preferred_ip_protocol: "ip4"
+
