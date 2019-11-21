@@ -39,19 +39,13 @@ scrape_configs:
     static_configs:
       - targets: ['traefik:8082']
 
-  - job_name: 'cadvisor'
-
+  - job_name: 'docker'
     # Override the global default and scrape targets from this job every 5 seconds.
     scrape_interval: 5s
-
-    dns_sd_configs:
-    - names:
-      - 'tasks.cadvisor'
-      type: 'A'
-      port: 8080
-
-#     static_configs:
-#          - targets: ['cadvisor:8080']
+    static_configs:
+      # this is tricky on Linux since host.docker.internal isn"t yet implemented : https://github.com/docker/for-linux/issues/264 
+      # workaround:  use 'docker network inspect prom_default --format='{{( index .IPAM.Config 0).Gateway}}''
+      - targets: ['172.20.0.1:9323']
 
   - job_name: 'node-exporter'
 
