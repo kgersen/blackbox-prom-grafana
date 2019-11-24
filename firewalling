@@ -1,0 +1,21 @@
+Status: active
+
+To                         Action      From
+--                         ------      ----
+Anywhere                   ALLOW       192.168.0.0/16            
+Anywhere                   ALLOW       10.0.0.0/8                
+Anywhere                   ALLOW       172.16.0.0/12             
+22 (v6)                    LIMIT       Anywhere (v6)             
+Anywhere (v6)              ALLOW       2001:bc8:2679:100::/56    
+Anywhere (v6)              ALLOW       fe80::/10                 
+Anywhere (v6)              ALLOW       fc00::/7                  
+
+Anywhere on gw0            ALLOW FWD   Anywhere on docker0       
+Anywhere on docker0        ALLOW FWD   Anywhere on docker0       
+Anywhere                   ALLOW FWD   Anywhere on docker0       
+Anywhere (v6) on docker0   ALLOW FWD   2001:bc8:2679:100::/56 on wg0
+Anywhere (v6)              ALLOW FWD   Anywhere (v6) on eno1     
+Anywhere (v6) on gw0       ALLOW FWD   Anywhere (v6) on docker0  
+Anywhere (v6) on docker0   ALLOW FWD   Anywhere (v6) on docker0  
+Anywhere (v6)              ALLOW FWD   Anywhere (v6) on docker0  
+

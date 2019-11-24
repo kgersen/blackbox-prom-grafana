@@ -10,7 +10,7 @@ services:
     container_name: prom_traefik
     command:
       #- "--log.level=DEBUG"
-      - "--api.insecure=true"
+      - "--api.insecure=false"
       - "--api.dashboard=true"
       - "--entryPoints.metrics.address=:8082"
       - "--metrics.prometheus.entrypoint=metrics"
@@ -83,7 +83,7 @@ services:
     user: "104"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.grafana.rule=Host(`grafana.lan`)"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.lan`,`sp.nspeed.org`)"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
     restart: unless-stopped
 

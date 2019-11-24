@@ -1,16 +1,26 @@
 modules:
   http_2xx:
     prober: http
-    http:
-      preferred_ip_protocol: "ip4"
-  http_post_2xx:
+  http_2xx_v4:
     prober: http
     http:
-      method: POST
-  tcp_connect:
-    prober: tcp
+      preferred_ip_protocol: "ip4"
+      ip_protocol_fallback: false
+  http_2xx_v6:
+    prober: http
+    http:
+      preferred_ip_protocol: "ip6"
+      ip_protocol_fallback: false
   icmp:
+    prober: icmp
+  icmp_v4:
     prober: icmp
     icmp:
       preferred_ip_protocol: "ip4"
+      ip_protocol_fallback: false      
+  icmp_v6:
+    prober: icmp
+    icmp:
+      preferred_ip_protocol: "ip6"
+      ip_protocol_fallback: false      
 
