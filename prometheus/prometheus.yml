@@ -52,17 +52,19 @@ scrape_configs:
     # Override the global default and scrape targets from this job every 5 seconds.
     scrape_interval: 5s
 
-    dns_sd_configs:
-    - names:
-      - 'tasks.node-exporter'
-      type: 'A'
-      port: 9100
-    
-    static_configs:
-      - targets: 
-        - '192.168.250.1:9100'
-        - '192.168.250.2:9100'
-        - '192.168.250.4:9100'
+    # dns_sd_configs:
+    # - names:
+    #   - 'tasks.node-exporter'
+    #   type: 'A'
+    #   port: 9100
+
+    # static_configs:
+    #   - targets: 
+    #     - 'node-exporter:9100'
+
+    file_sd_configs:
+      - files:
+        - node-exporter.yaml
 
   - job_name: 'blackbox-http'
     metrics_path: /probe
