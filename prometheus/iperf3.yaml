@@ -1,0 +1,5 @@
+- targets:  # url;humanname;routing;switch
+    - bouygues.iperf.fr
+    - ping.online.net
+    - ping6.online.net
+
